@@ -23,6 +23,6 @@
 	},
 	"compileOnSave": false,
 	"include": [
-		"./src"
+		"./src/main"
 	]
 }

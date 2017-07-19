@@ -4,9 +4,9 @@
   "description": "",
   "main": "main.js",
   "scripts": {
-    "start": "webpack-dev-server",
-    "build": "electron .",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "npm run tsc && webpack-dev-server",
+    "build": "electron ./lib",
+    "tsc": "tsc -p ."
   },
   "repository": {
     "type": "git",

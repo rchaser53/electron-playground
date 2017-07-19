@@ -7,7 +7,7 @@ module.exports = {
 	context: path.resolve(__dirname, './src'),
   devtool: 'inline-source-map',
   entry: {
-    index: "./index.ts"
+    index: "./renderer/renderer.ts"
   },
   output: {
     path: path.resolve(__dirname, "lib"),
