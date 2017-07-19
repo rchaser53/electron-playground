@@ -34,5 +34,9 @@
     "vue-template-compiler": "^2.4.1",
     "webpack": "^3.3.0",
     "webpack-dev-server": "^2.5.1"
+  },
+  "dependencies": {
+    "@types/socket.io": "^1.4.29",
+    "socket.io": "^2.0.3"
   }
 }
