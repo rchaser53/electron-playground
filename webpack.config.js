@@ -2,9 +2,10 @@ const path = require("path");
 
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const nodeRoot = path.join( __dirname, 'node_modules' )
 
 module.exports = {
-	context: path.resolve(__dirname, './src'),
+  context: path.resolve(__dirname, './src'),
   devtool: 'inline-source-map',
   entry: {
     index: "./renderer/renderer.ts"
@@ -43,7 +44,10 @@ module.exports = {
       test: /\.html$/,
       loader: "html-loader",
       exclude:["node_modules/*"]
-    }]
+    }],
+    noParse: [
+      /socket.io-client/
+    ]
   },
   plugins: [
     new HtmlWebpackPlugin({template: '../index.html'}),
@@ -52,7 +56,8 @@ module.exports = {
   ],
   resolve: {
     alias: {
-      vue: 'vue/dist/vue.js'
+      vue: 'vue/dist/vue.js',
+      'socket.io-client': path.join( nodeRoot, 'socket.io-client', 'dist', 'socket.io.js' )
     }
   },
   node: {
