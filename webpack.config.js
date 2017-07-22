@@ -1,19 +1,18 @@
 const path = require("path");
 
 const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const nodeRoot = path.join( __dirname, 'node_modules' )
 
 module.exports = {
   context: path.resolve(__dirname, './src'),
   devtool: 'inline-source-map',
   entry: {
-    index: "./renderer/renderer.ts"
+    "renderer/": "./renderer/renderer.ts"
   },
   output: {
     path: path.resolve(__dirname, "lib"),
     publicPath: "/public/",
-    filename: "bundle.js"
+    filename: "[name]bundle.js"   // actually it's a strange but for webpack syntax
   },
   resolve: {
     extensions: ['.html', '.js', '.vue', '.ts']
@@ -50,7 +49,6 @@ module.exports = {
     ]
   },
   plugins: [
-    new HtmlWebpackPlugin({template: '../index.html'}),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin()
   ],

@@ -4,8 +4,11 @@
   "description": "",
   "main": "main.js",
   "scripts": {
-    "start": "npm run tsc && webpack-dev-server",
-    "build": "electron ./lib",
+    "prestart": "npm run clean && npm run tsc",
+    "start": "npm-run-all --parallel dev-server ws-server electron",
+    "dev-server": "webpack-dev-server",
+    "ws-server": "node ./lib/server",
+    "electron": "electron ./lib/main",
     "clean": "rimraf lib",
     "tsc": "tsc -p ."
   },

@@ -10,6 +10,13 @@ socket.on('news', (data) => {
         inputData: ''
       }
     },
+    mixins: [{
+      data: function() {
+        return {
+          inputData: 'gya-n'
+        }
+      }
+    }],
     template: `<div v-on:click="sendMessage">
       <button>fire</button>
       <input type="text" v-on:change="changeInputData" v-bind:value="inputData"/>
@@ -26,5 +33,10 @@ socket.on('news', (data) => {
       }
     }
   })
-
 })
+
+// mixins
+// DI
+// vueのTypeScript
+// vue storybook
+// vueのmoduleシステム
