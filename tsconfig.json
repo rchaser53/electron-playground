@@ -24,6 +24,7 @@
 	},
 	"compileOnSave": false,
 	"include": [
-		"./src/main"
+		"./src/main",
+		"./src/server.ts"
 	]
 }
