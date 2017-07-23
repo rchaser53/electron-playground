@@ -35,8 +35,6 @@ socket.on('news', (data) => {
   })
 })
 
-// mixins
-// DI
 // vueのTypeScript
 // vue storybook
 // vueのmoduleシステム
