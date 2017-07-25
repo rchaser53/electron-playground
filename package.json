@@ -9,7 +9,6 @@
     "dev-server": "webpack-dev-server",
     "ws-server": "node ./lib/server",
     "electron": "electron ./lib/main",
-    "clean": "rimraf lib",
     "tsc": "tsc -p ."
   },
   "repository": {
