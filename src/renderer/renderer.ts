@@ -15,16 +15,20 @@ let vue
 socket.on('news', (data) => {
   vue = new Vue({
     el: '#app',
+    mounted: function() {
+      console.log(this.$data)
+    },
     data: function() {
       return {
-        inputData: '',
+        inputData: 'gya-n',
         polingData: ''
       }
     },
     mixins: [{
       data: function() {
         return {
-          inputData: 'gya-n'
+          inputData: 'aaa',
+          nyanChu: 123
         }
       }
     }],
