@@ -1,13 +1,24 @@
 import * as Vue from 'vue'
 import * as SocketIO from "socket.io-client"
 
+declare module 'vue/types/vue' {
+  interface Vue {
+    inputData: string;
+    polingData: string;
+  }
+}
+
 const socket = SocketIO('http://localhost:3000');
+
+let vue
+
 socket.on('news', (data) => {
-  new Vue({
+  vue = new Vue({
     el: '#app',
     data: function() {
       return {
-        inputData: ''
+        inputData: '',
+        polingData: ''
       }
     },
     mixins: [{
@@ -20,6 +31,7 @@ socket.on('news', (data) => {
     template: `<div v-on:click="sendMessage">
       <button>fire</button>
       <input type="text" v-on:change="changeInputData" v-bind:value="inputData"/>
+      {{polingData}}
     </div>`,
     methods: {
       sendMessage() {
@@ -35,8 +47,6 @@ socket.on('news', (data) => {
   })
 })
 
-// mixins
-// DI
-// vueのTypeScript
-// vue storybook
-// vueのmoduleシステム
+socket.on('poling', (data) => {
+  Vue.set(vue, 'polingData', data);
+})

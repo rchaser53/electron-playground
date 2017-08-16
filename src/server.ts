@@ -1,5 +1,6 @@
 {
   const fs = require('fs');
+  const cron = require('node-cron')
 
   const handler = (req, res) => {
     fs.readFile(__dirname + '/index.html',
@@ -20,8 +21,10 @@
   app.listen(3000);
   io.on('connection', (socket) => {
     socket.emit('news', { hello: 'world' });
-    socket.on('my other event', (data) => {
-      console.log(data);
-    });
+
+    new cron.schedule('0 * * * * *', function() {
+      console.log('You will see this message every minute');
+      socket.emit('poling', Date.now())
+    }, null, true, 'America/Los_Angeles');
   });
 }
