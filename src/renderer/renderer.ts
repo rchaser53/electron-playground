@@ -39,9 +39,8 @@ socket.on('news', (data) => {
     </div>`,
     methods: {
       sendMessage() {
-        const temp = this
         socket.emit('my other event', {
-          my: (temp as any).inputData
+          my: this.inputData
         })
       },
       changeInputData(event) {
@@ -52,5 +51,6 @@ socket.on('news', (data) => {
 })
 
 socket.on('poling', (data) => {
+  console.log(data)
   Vue.set(vue, 'polingData', data);
 })
